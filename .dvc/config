@@ -1,4 +1,5 @@
 [core]
     remote = storage
+    autostage = true
 ['remote "storage"']
     url = s3://knx-data-lake-gold-zone/staging/ai/viewability_dvc/
