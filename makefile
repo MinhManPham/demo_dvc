@@ -1,18 +1,20 @@
 dvc: install
 	# Check workspace is not dirty
-	git diff --quiet HEAD
+	# git diff --quiet HEAD
 
 	# add the input data
 	dvc add data/addresses.csv
-	git add -f data/*
+	git add .
+
+	# add remote data storage
+	dvc remote add -d -f storage s3://knx-data-lake-gold-zone/staging/ai/viewability_dvc/
 
 	# Commit the metrics
-	dvc remote add -d -f storage s3://knx-data-lake-gold-zone/staging/ai/viewability_dvc/
 	git commit -m "[DVC] Update model addresses.csv"
 
 	# Push the metrics
 	dvc push -R data
-	git push
+	git push origin
 
 run: dvc
 	python3 main.py
