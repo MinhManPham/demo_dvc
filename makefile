@@ -1,7 +1,4 @@
 dvc: install
-	# Check workspace is not dirty
-	# git diff --quiet HEAD
-
 	# add the input data
 	dvc add data/addresses.csv
 	git add .
